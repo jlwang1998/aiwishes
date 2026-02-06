@@ -17,3 +17,14 @@ git commit -m "Initial commit"
 6、‌推送更改到 GitHub‌
 最后，将你的更改推送到 GitHub：
 git push -u origin main
+
+# 二、vscode调整pip源
+永久调整：
+终端输入：
+pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
+pip config set install.trusted-host mirrors.aliyun.com
+
+可输入pip config get global.index-url进行验证
+
+# 三、创建项目的.venv虚拟环境
+vscode需要先安装python插件，Cmd+Shift+P（macOS）打开命令面板，然后输入Python: Select Interpreter创建虚拟环境即可
