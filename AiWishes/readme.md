@@ -28,3 +28,34 @@ pip config set install.trusted-host mirrors.aliyun.com
 
 # 三、创建项目的.venv虚拟环境
 vscode需要先安装python插件，Cmd+Shift+P（macOS）打开命令面板，然后输入Python: Select Interpreter创建虚拟环境即可
+
+# 四、vscode上传git慢，通过代理
+配置Git客户端使用代理服务器，可以通过设置HTTPS或HTTP代理来加速上传速度,端口替换为实际代理的端口
+`git config –global http.proxy http://127.0.0.1:7890`
+`git config –global https.proxy http://127.0.0.1:7890`
+
+取消代理，使用：
+` git config --global --unset http.proxy`
+`git config --global --unset http.proxy`
+
+# 五、上传github时忽略.venv文件夹
+在使用 VSCode 推送代码到 GitHub 时，如果你不想上传依赖库（例如 本项目中的 .venv 文件夹），你可以通过 .gitignore 文件来排除这些文件或文件夹。.gitignore 文件可以帮助你指定哪些文件或文件夹 Git 应该忽略，这样在推送代码时就不会包含这些文件。
+
+步骤 1: 创建或编辑 .gitignore 文件
+在项目根目录下，创建一个名为 .gitignore 的新文件
+打开 .gitignore 文件进行编辑。
+
+步骤 2: 添加依赖库到 .gitignore
+在 .gitignore 文件中，添加你想要忽略的依赖库或文件夹。例如，对于本项目，你可以添加以下内容来忽略 .venv 文件夹：
+`.venv/`
+
+注意事项:
+已存在的 .venv‌：如果你已经有.venv 文件夹在你的本地仓库中，你需要先从 Git 历史中移除这个文件夹（但不删除本地文件）。这可以通过以下命令完成：
+
+`git rm -r --cached node_modules/`
+
+然后再次提交和推送你的 .gitignore 文件更改。
+
+# 六、数据库mysql安装与配置
+https://zhuanlan.zhihu.com/p/1978781019361531662
+

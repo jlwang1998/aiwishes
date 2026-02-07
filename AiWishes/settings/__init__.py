@@ -5,14 +5,14 @@ DB_URI = "mysql+aiomysql://root:root@127.0.0.1:3306/zhiliao_ainame?charset=utf8m
 
 
 # 邮箱相关配置
-MAIL_USERNAME="3622739389@qq.com"
-MAIL_PASSWORD="mkgjzkeoptoccjhi"
-MAIL_FROM="3622739389@qq.com"
-MAIL_PORT=587
-MAIL_SERVER="smtp.qq.com"
-MAIL_FROM_NAME="知了课堂"
-MAIL_STARTTLS=True
-MAIL_SSL_TLS=False
+MAIL_USERNAME="jlwang1998@163.com"
+MAIL_PASSWORD="GFT6YTR4MpRVehVY"
+MAIL_FROM="jlwang1998@163.com"
+MAIL_PORT=465
+MAIL_SERVER="smtp.163.com"
+MAIL_FROM_NAME="jlwang"
+MAIL_STARTTLS=False
+MAIL_SSL_TLS=True
 
 
 JWT_SECRET_KEY = "sfsadadafsjw"
