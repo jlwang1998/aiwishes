@@ -1,7 +1,7 @@
 from datetime import timedelta
 
 
-DB_URI = "mysql+aiomysql://root:root@127.0.0.1:3306/zhiliao_ainame?charset=utf8mb4"
+DB_URI = "mysql+aiomysql://root:123456@127.0.0.1:3306/aiwishes?charset=utf8mb4"
 
 
 # 邮箱相关配置
