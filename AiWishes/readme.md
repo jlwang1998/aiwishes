@@ -59,3 +59,18 @@ vscode需要先安装python插件，Cmd+Shift+P（macOS）打开命令面板，�
 # 六、数据库mysql安装与配置
 https://zhuanlan.zhihu.com/p/1978781019361531662
 
+一、虚拟环境
+# 1、创建虚拟环境
+# 在项目根目录执行
+python -m venv .venv  # .venv 为环境文件夹名（可自定义）
+# 2、激活虚拟环境
+windows
+.\.venv\Scripts\activate
+Linux：
+source .venv/bin/activate
+# 3、VSCode 关联解释器
+按 Ctrl+Shift+P → 输入 Python: Select Interpreter。
+选择虚拟环境路径（如 ./.venv/Scripts/python.exe）。
+右下角状态栏显示当前环境名称即配置成功。
+
+网易邮箱：POP3/SMTP/IMAP授权码：ZLb65ErcR3esQVLP
