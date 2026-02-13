@@ -42,7 +42,7 @@ class EmailCode(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     email: Mapped[str] = mapped_column(String(100))
     code: Mapped[str] = mapped_column(String(10))
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.now)
+    created_time: Mapped[datetime] = mapped_column(DateTime, default=datetime.now)
 
     
     
