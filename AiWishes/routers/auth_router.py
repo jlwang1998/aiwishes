@@ -11,6 +11,7 @@ import random
 from aiosmtplib import SMTPResponseException
 from repository.user_repo import EmailCodeRepository, User, UserRepository
 from schemas import ResponseOut
+from schemas.user_schemas import RegisterIn, UserCreateSchema
 
 
 router = APIRouter(prefix="/auth")
@@ -54,4 +55,17 @@ async def get_email_code(
             await email_code_repo.create(str(email), code)
         else:
             raise HTTPException(500, detail="邮件发送失败！")
+    return ResponseOut()
+
+@router.post("/register",response_model=ResponseOut)
+async def register(data: RegisterIn, session: AsyncSession = Depends(get_session)):
+    # 创建UserRepository实例，用于用户相关的数据库操作
+    user_repo = UserRepository(session)
+    if await user_repo.email_is_exist(str(data.email)):
+        raise HTTPException(status_code=400, detail="邮箱已经存在！")
+    # 创建EmailCodeRepository实例，用于验证码相关的数据库操作
+    email_code_repo = EmailCodeRepository(session)
+    if not await email_code_repo.check_email_code(email=str(data.email), code=data.code):
+        raise HTTPException(status_code=400, detail="邮箱验证码错误！")
+    await user_repo.create(UserCreateSchema(email=data.email, username=data.username, password=data.password))
     return ResponseOut()
