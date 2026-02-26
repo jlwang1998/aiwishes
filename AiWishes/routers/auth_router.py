@@ -11,11 +11,12 @@ import random
 from aiosmtplib import SMTPResponseException
 from repository.user_repo import EmailCodeRepository, User, UserRepository
 from schemas import ResponseOut
-from schemas.user_schemas import RegisterIn, UserCreateSchema
-
+from schemas.user_schemas import RegisterIn, UserCreateSchema,LoginIn,LoginOut
+from core.auth import AuthHandler
 
 router = APIRouter(prefix="/auth")
-
+# 创建AuthHandler实例，用于处理用户认证和授权相关的逻辑，例如生成和验证JWT令牌等
+auth_handler = AuthHandler()
 # - response_model=ResponseOut：指定响应数据的模型为ResponseOut，FastAPI会自动将返回值转换为该模型格式
 @router.get("/code", response_model=ResponseOut)
 async def get_email_code(
@@ -69,3 +70,24 @@ async def register(data: RegisterIn, session: AsyncSession = Depends(get_session
         raise HTTPException(status_code=400, detail="邮箱验证码错误！")
     await user_repo.create(UserCreateSchema(email=data.email, username=data.username, password=data.password))
     return ResponseOut()
+
+@router.post("/login", response_model=LoginOut)
+async def login(
+    data: LoginIn,
+    session: AsyncSession = Depends(get_session),
+):
+    # 创建UserRepository实例，用于用户相关的数据库操作
+    user_repo = UserRepository(session)
+    # 1. 根据邮箱查询用户对象
+    user:User|None = await user_repo.get_by_email(str(data.email))
+    if user is None:
+        raise HTTPException(400, detail="该用户不存在！")
+    # 2. 验证密码是否正确
+    if not user.check_password(data.password):
+        raise HTTPException(400, detail="邮箱或密码错误！")
+    # 3. 生成JWT令牌（假设有一个函数create_access_token）
+    token = auth_handler.encode_login_token(user.id)
+    return {
+        "user": user,
+        "token": token
+    }

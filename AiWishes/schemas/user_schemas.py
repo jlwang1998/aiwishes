@@ -29,3 +29,14 @@ class UserCreateSchema(BaseModel):
     email: EmailStr
     username: UsernameStr
     password: RawPasswordStr
+
+class LoginIn(BaseModel):
+    """登录接口的输入数据模型"""
+    email: EmailStr
+    password: RawPasswordStr
+
+class LoginOut(BaseModel):
+    """登录接口的输出数据模型"""
+    user: UserCreateSchema
+    token: str
+
