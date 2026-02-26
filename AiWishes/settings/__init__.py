@@ -27,5 +27,5 @@ JWT_ACCESS_TOKEN_EXPIRES = timedelta(days=15)
 JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=30)
 
 #大模型api_key
-DeepSeek_API_KEY = "sk-***********************"
+DeepSeek_API_KEY = "sk-316c4f8afaa345e0b307c3eedd7bd0b4"
 
