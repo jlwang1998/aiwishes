@@ -14,6 +14,7 @@ async def root():
     return {"message": "Hello World"}
 
 #测试邮件发送
+#http://127.0.0.1:8000/mail/test?email=jlwang1998@163.com
 @app.get('/mail/test')
 async def send_mail_test(
     email: str,

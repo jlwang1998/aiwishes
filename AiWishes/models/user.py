@@ -3,7 +3,6 @@ from sqlalchemy.orm import mapped_column, Mapped, relationship
 from sqlalchemy import Integer, String, DateTime
 from pwdlib import PasswordHash
 from datetime import datetime
-from . import user
 
 class User(Base):
     __tablename__ = "users"
@@ -25,16 +24,16 @@ class User(Base):
         super().__init__(*args, **kwargs)
         self.password = password#触发setter方法
         #@property是Python的魔法装饰器，它会把方法变成属性
-        @property
-        def password(self):
-            return self._password
-        
-        @password.setter
-        def password(self, password):
-            self._password = PasswordHash().hash(password)
+    @property
+    def password(self):
+        return self._password
+    
+    @password.setter
+    def password(self, password):
+        self._password = PasswordHash().hash(password)
 
-        def check_password(self, password):
-            return PasswordHash().verify(password, self._password)
+    def check_password(self, password):
+        return PasswordHash().verify(password, self._password)
         
 class EmailCode(Base):
     __tablename__ = "email_code"

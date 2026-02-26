@@ -7,6 +7,6 @@ class NameSchema(BaseModel):
     reference: Annotated[str, Field(..., description="出处")]
     moral: Annotated[str, Field(..., description="寓意")]
 
-class NameResult(BaseModel):
+class NameResultSchema(BaseModel):
     names: List[NameSchema]
 
