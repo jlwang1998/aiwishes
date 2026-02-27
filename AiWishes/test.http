@@ -1,0 +1,26 @@
+
+GET http://127.0.0.1:8000/auth/code?email=jlwang1998@163.com
+
+
+####
+
+POST http://127.0.0.1:8000/auth/register
+Content-Type: application/json
+
+{
+  "email": "jlwang1998@163.com",
+  "username": "hynever",
+  "password": "111111",
+  "confirm_password": "111111",
+  "code": "2198"
+}
+
+###
+
+POST http://127.0.0.1:8000/auth/login
+Content-Type: application/json
+
+{
+  "email": "jlwang1998@163.com",
+  "password": "111111"
+}
