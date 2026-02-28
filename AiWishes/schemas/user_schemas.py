@@ -35,8 +35,13 @@ class LoginIn(BaseModel):
     email: EmailStr
     password: RawPasswordStr
 
+class UserSchema(BaseModel):
+    id: Annotated[int, Field(...)]
+    email: EmailStr
+    username: UsernameStr
+
 class LoginOut(BaseModel):
     """登录接口的输出数据模型"""
-    user: UserCreateSchema
+    user: UserSchema
     token: str
 

@@ -24,3 +24,29 @@ Content-Type: application/json
   "email": "jlwang1998@163.com",
   "password": "111111"
 }
+
+###
+POST http://127.0.0.1:8000/agent/name
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOjEsInN1YiI6IjEiLCJleHAiOjE3NzM1NjI4NTF9.2-tDaeK110Rj7j65_n2B439I2ceiPvzCADEblmYvMqc
+
+{
+  "surname": "王",
+  "length": "两字",
+  "gender": "男",
+  "other": "要尽量大气一点，好听一点"
+}
+
+###
+POST http://127.0.0.1:8000/agent/wish
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOjEsInN1YiI6IjEiLCJleHAiOjE3NzM1NjI4NTF9.2-tDaeK110Rj7j65_n2B439I2ceiPvzCADEblmYvMqc
+
+{
+  "name": "王家乐",
+  "gender": "男",
+  "relation": "同事",
+  "wish_type": "生日",
+  "wish_style": "温馨",
+  "wish_length": 50
+}

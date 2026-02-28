@@ -89,5 +89,5 @@ async def login(
     token = auth_handler.encode_login_token(user.id)
     return {
         "user": user,
-        "token": token
+        "token": token['access_token'] # 只取access_token
     }

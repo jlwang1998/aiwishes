@@ -10,3 +10,11 @@ class NameSchema(BaseModel):
 class NameResultSchema(BaseModel):
     names: List[NameSchema]
 
+class WishSchema(BaseModel):
+    wish: Annotated[str, Field(..., description="祝语")]
+    moral: Annotated[str, Field(..., description="寓意")]
+
+
+class WishResultSchema(BaseModel):
+    wishes: List[WishSchema]
+
